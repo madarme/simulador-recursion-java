@@ -1,4 +1,4 @@
-import{lex}from'./lexer.js';import{parse}from'./parser.js';import{execute}from'./interpreter.js';import{examples}from'../examples/examples.js';
+import{lex}from'./lexer.js?v=9';import{parse}from'./parser.js?v=9';import{execute}from'./interpreter.js?v=9';import{examples}from'../examples/examples.js?v=9';
 const $=id=>document.getElementById(id),code=$('code'),message=$('message');let sim=null,selected=null,cursor=0;
 code.value=examples.factorial;$('exampleSelect').onchange=()=>{const k=$('exampleSelect').value;code.value=examples[k];$('args').value=k==='suma'?'[10,20,30], 0':k==='fibonacci'?'5':'5';reset()};
 function reset(){sim=null;selected=null;cursor=0;$('tree').innerHTML='';$('stack').className='stack empty';$('stack').textContent='Ejecuta una simulación';$('details').className='details empty';$('details').textContent='Selecciona un nodo del árbol.';['calls','depth','base','steps'].forEach(x=>$(x).textContent='0');$('result').textContent='—';$('phase').textContent='EN ESPERA';$('prev').disabled=true;$('next').disabled=true}
