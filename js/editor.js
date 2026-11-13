@@ -1,5 +1,5 @@
-const code=document.getElementById('code'),numbers=document.getElementById('lineNumbers'),select=document.getElementById('exampleSelect');
+const code=document.getElementById('code'),numbers=document.getElementById('lineNumbers'),select=document.getElementById('exampleSelect'),message=document.getElementById('message');
 function syncLines(){const count=Math.max(1,code.value.split('\n').length);numbers.textContent=Array.from({length:count},(_,i)=>i+1).join('\n')}
 const previousInput=code.oninput;code.oninput=()=>{syncLines();if(previousInput)previousInput()};
-const previousSelect=select.onchange;select.onchange=()=>{if(select.value==='custom'){syncLines();code.focus();return}if(previousSelect)previousSelect();syncLines()};
+const previousSelect=select.onchange;select.onchange=()=>{if(select.value==='custom'){code.value='';code.placeholder='Ejemplo de estructura:\n\npublic static int factorial(int n) {\n    if (n <= 1) {\n        return 1;\n    }\n    return n * factorial(n - 1);\n}';syncLines();if(previousInput)previousInput();message.className='message';message.textContent='Código propio: escriba un método static con tipo de retorno, nombre, parámetros y cuerpo.';code.focus();return}code.placeholder='';if(previousSelect)previousSelect();syncLines()};
 code.addEventListener('scroll',()=>{numbers.scrollTop=code.scrollTop});syncLines();
