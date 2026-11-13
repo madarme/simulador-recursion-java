@@ -1,4 +1,4 @@
-import{lex}from'./lexer.js?v=15';import{parse}from'./parser.js?v=15';import{execute}from'./interpreter.js?v=15';import{examples}from'../examples/examples.js?v=15';
+import{lex}from'./lexer.js?v=16';import{parse}from'./parser.js?v=16';import{execute}from'./interpreter.js?v=16';import{examples}from'../examples/examples.js?v=16';
 const $=id=>document.getElementById(id),code=$('code'),message=$('message');let sim=null,selected=null,eventCursor=0,ast=null;
 const fmt=v=>Array.isArray(v)?`[${v.join(', ')}]`:String(v);function lock(){ $('run').disabled=true;$('prev').disabled=true;$('next').disabled=true }
 function reset(){sim=null;selected=null;eventCursor=0;$('tree').innerHTML='';$('stack').className='stack empty';$('stack').textContent='Ejecuta una simulación';$('details').className='details empty';$('details').textContent='Selecciona un nodo del árbol.';['calls','depth','base','steps'].forEach(x=>$(x).textContent='0');$('result').textContent='—';$('phase').textContent='EN ESPERA';lock();analyze()}
